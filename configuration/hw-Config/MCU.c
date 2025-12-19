@@ -1315,10 +1315,14 @@ RAMFUNC_BEGIN
 float MCU_TempSensorCalc_M1()
 {
     float result;
+#if (ACTIVE_TEMP_SENSOR_M1) // Active IC
+    result = (mcu[1].adc_scale.temp_ps * (uint16_t)mcu[1].dma_results[ADC_TEMP]) - (TEMP_SENSOR_OFFSET_M1 / TEMP_SENSOR_SCALE_M1);
+#else // Passive NTC
     float lut_input = mcu[1].adc_scale.temp_ps * (uint16_t)mcu[1].dma_results[ADC_TEMP];
     uint32_t index = SAT(1U, TEMP_SENS_LUT_WIDTH - 1U, (uint32_t)(lut_input * Temp_Sens_LUT_M1.step_inv));
     float input_index = Temp_Sens_LUT_M1.step * index;
     result = Temp_Sens_LUT_M1.val[index-1U] + (lut_input - input_index) * Temp_Sens_LUT_M1.step_inv * (Temp_Sens_LUT_M1.val[index] - Temp_Sens_LUT_M1.val[index-1U]);
+#endif
     return result;
 }
 RAMFUNC_END
@@ -1545,7 +1549,7 @@ void MCU_InitADCs_M1()
 {
 
     float cs_gain = motor[1].params_ptr->sys.analog.shunt.opamp_gain;
-    if(motor[0].params_ptr->sys.analog.cs_meas_type == Active_Sensor)
+    if(motor[1].params_ptr->sys.analog.cs_meas_type == Active_Sensor)
     {
       mcu[1].adc_scale.i_uvw = (ADC_VREF_GAIN * CY_CFG_PWR_VDDA_MV * 1.0E-3f) / ((1<<12U) * motor[1].params_ptr->sys.analog.shunt.current_sensitivity * cs_gain); // [A/ticks]
     }
@@ -1556,7 +1560,11 @@ void MCU_InitADCs_M1()
     mcu[1].adc_scale.v_uvw = (ADC_VREF_GAIN * CY_CFG_PWR_VDDA_MV * 1.0E-3f) / ((1<<12U) * ADC_SCALE_VUVW_M1); // [V/ticks]
     mcu[1].adc_scale.v_dc = (ADC_VREF_GAIN * CY_CFG_PWR_VDDA_MV * 1.0E-3f) / ((1<<12U) * ADC_SCALE_VDC_M1); // [V/ticks]
     mcu[1].adc_scale.v_pot = 1.0f / (1<<12U); // [%/ticks]
+#if (ACTIVE_TEMP_SENSOR_M1)
+    mcu[1].adc_scale.temp_ps = (ADC_VREF_GAIN * CY_CFG_PWR_VDDA_MV * 1.0E-3f) / ((1<<12U) * TEMP_SENSOR_SCALE_M1); // [Celsius/ticks]
+#else // passive NTC
     mcu[1].adc_scale.temp_ps = 1.0f / (1<<12U); // [1/ticks], normalized voltage wrt Vcc
+#endif
 }
 
 void MCU_InitAnalogRouting_M1()

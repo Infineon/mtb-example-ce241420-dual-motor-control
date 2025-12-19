@@ -32,4 +32,5 @@
 *******************************************************************************/
 #pragma once
 
+#include "MotorCtrlHWConfig.h"
 #include "Controller.h"

@@ -36,24 +36,6 @@
 
 
 #define    MOTOR_CTRL_NO_OF_MOTOR_BITPOSITION               ((1U<<MOTOR_CTRL_NO_OF_MOTOR) -1)
-/*Hardware configuration details*/
-/*
- * 1. Hall sensor interface  :HALL_0_PORT,HALL_1_PORT,HALL_2_PORT
- * 2. Hall Enable pin  :N_HALL_EN_PORT
- * 3. Encode interface :POSIF_ENC_HW
- ^ 4. Encoder Enable pin :ENC_EN_PORT
- * 5. Phase voltage measurement : True, ???ADC_SAMP_VV_ENABLED,ADC_SAMP_VU_ENABLED,ADC_SAMP_VW_ENABLED
- * 6. Current measurement : 
- * 7. Temperature measurement :ADC_SAMP_TEMP_ENABLED
- * 8. POT measurement :  ?? ADC_SAMP_VPOT_ENABLED
- * 9. Fault Input : N_FAULT_HW_PORT
- * 10. Direction LED :DIR_LED_PORT
- * 11. Direction input :DIR_SWITCH_PORT and N_DIR_PUSHBTN_PORT
- * 12. Fault LED :N_FAULT_LED_PORT, N_FAULT_LED_ALL_PORT
- * 13. Brake input :N_BRK_SWITCH_PORT (NA)
- * 14. Smart Gate Driver : USING_SGD (NA)
- */
-
 /*******************************************************************************/
 /*Hardware initialization  function are all the configured motor are called together*/
 void HW_IFACE_Init(uint8_t motor_id)

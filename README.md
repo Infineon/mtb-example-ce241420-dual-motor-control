@@ -9,7 +9,7 @@ Code example includes the following solutions.
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-ce241420-dual-motor-control)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDE0MjAiLCJTcGVjIE51bWJlciI6IjAwMi00MTQyMCIsIkRvYyBUaXRsZSI6IkR1YWwgbW90b3IgY29udHJvbCBkZW1vIiwicmlkIjoicHJhc2hhbnRhYmhpIiwiRG9jIHZlcnNpb24iOiIxLjAuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDE0MjAiLCJTcGVjIE51bWJlciI6IjAwMi00MTQyMCIsIkRvYyBUaXRsZSI6IkR1YWwgbW90b3IgY29udHJvbCBkZW1vIiwicmlkIjoiYWJoaXNoZWsucHJhc2hhbnRAaW5maW5lb24uY29tIiwiRG9jIHZlcnNpb24iOiIxLjAuMSIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
 
 
 ## Requirements
@@ -341,6 +341,7 @@ Document title: *CE241420* – *Dual motor control demo*
  Version | Description of change
  ------- | ---------------------
  1.0.0   | New code example
+ 1.0.1   | Updated motor control Library to 3.1.0
 <br>
 
 
